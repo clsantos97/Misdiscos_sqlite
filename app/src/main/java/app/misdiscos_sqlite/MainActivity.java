@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         db = openOrCreateDatabase("MisDiscos", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS misDiscos(Grupo VARCHAR,Disco VARCHAR);");
-
+        //db.execSQL("DELETE FROM MisDiscos");
         listar();
     }
 
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     /**************************** BUTTON EVENTS **********************/
     @Override
     public void onClick(View view) {
-        String grupo = etGrupo.getText().toString();
-        String disco = etTitulo.getText().toString();
+        String grupo = etGrupo.getText().toString().trim();
+        String disco = etTitulo.getText().toString().trim();
 
 
         if (grupo.isEmpty() || disco.isEmpty()) {
