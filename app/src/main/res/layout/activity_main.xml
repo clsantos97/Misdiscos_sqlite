@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.misdiscos_sqlite.MainActivity">
+
+    <TextView
+        android:id="@+id/tvGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/tv_grupo" />
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/etGrupo"
+        android:layout_below="@+id/etGrupo"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_titulo" />
+
+    <EditText
+        android:id="@+id/etGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvGrupo"
+        android:layout_below="@+id/tvGrupo"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvTitulo"
+        android:layout_below="@+id/tvTitulo"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/etTitulo"
+        android:layout_below="@+id/etTitulo"
+        android:text="@string/btn_add" />
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTitulo"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/btnAdd"
+        android:text="@string/btn_del" />
+
+    <ListView
+        android:id="@+id/lvDiscos"
+        android:layout_width="330dp"
+        android:layout_height="300dp"
+        android:layout_alignStart="@+id/btnAdd"
+        android:layout_below="@+id/btnAdd" />
+
+</RelativeLayout>

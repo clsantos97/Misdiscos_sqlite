@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Misdiscos_sqlite</string>
+    <string name="tv_grupo">Grupo:</string>
+    <string name="tv_titulo">Titulo disco:</string>
+    <string name="btn_del">Borrar</string>
+    <string name="btn_add">Añadir</string>
+</resources>
