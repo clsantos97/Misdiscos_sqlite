@@ -18,6 +18,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Practica Sqlite - App para registrar/borrar discos utilizando campos grupo/artista y titulo/disco.
+ * Agregadas validaciones: Ambos campos informados tanto para registrar como para borrar.
+ * + Verifica si el disco a registrar ya esta registrado.
+ * + Verifica si el disco a borrar existe.
+ * + OnItemLongClick sobre algun item de la lista se cargan los datos a los campos para facilitar el
+ * borrado.
+ *
+ * @author Carlos Santos
+ */
 public class MainActivity extends AppCompatActivity implements Button.OnClickListener, ListView.OnItemLongClickListener {
 
     EditText etGrupo, etTitulo;
@@ -68,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.lista_fila, lista);
         lvDiscos.setAdapter(adaptador);
+        c.close();
     }
 
     /**
@@ -81,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     /**
      * Verifica si un registro ya existe
      * @param xquery query de busqueda
-     * @return
+     * @return true si el disco esta registrado.
      */
     public boolean checkIfRecordExists(String xquery){
         Cursor cur = db.rawQuery(xquery,null);
@@ -100,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         String grupo = etGrupo.getText().toString().trim();
         String disco = etTitulo.getText().toString().trim();
 
-
         if (grupo.isEmpty() || disco.isEmpty()) {
             Toast toast = Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
@@ -116,6 +126,11 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     }
 
+    /**
+     * Añadir disco
+     * @param grupo Nombre de grupo o artista
+     * @param disco Nombre del disco
+     */
     public void addOnClick(String grupo, String disco) {
 
             if(checkIfRecordExists("SELECT * FROM MisDiscos WHERE Grupo = '" + grupo + "' AND Disco='" +
@@ -145,6 +160,11 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     }
 
+    /**
+     * Borrar disco
+     * @param grupo Nombre de grupo o artista
+     * @param disco Nombre del disco
+     */
     public void deleteOnClick(String grupo, String disco) {
 
         if(!checkIfRecordExists("SELECT * FROM MisDiscos WHERE Grupo = '" + grupo + "' AND Disco='" +
